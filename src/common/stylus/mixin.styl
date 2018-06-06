@@ -1,0 +1,23 @@
+.border-1Px{
+    height:0.1rem;
+	background-color:rgba(7,17,27,0.1);
+	-webkit-transform: scaleY(0.5);
+    -webkit-transform-origin:0 0;
+	transform: scaleY(0.5);
+    transform-origin:0 0;
+}
+bg-image($url)
+  background-image:url($url+"@2x.png")
+  @media (-webkit-min-device-pixel-radio:3),(min-device-pixel-radio:3)
+     background-image url($url+"@3x.png")
+.clearfix{
+    display:inline-block;
+    &:after{
+      display:block;
+      content:'.';
+      hieght:0;
+      line-height:0;
+      clear:both;
+      visibility:hidden;
+      }
+}
