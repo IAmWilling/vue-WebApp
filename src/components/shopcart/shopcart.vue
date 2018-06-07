@@ -188,6 +188,8 @@ export default {
         if(this.totalPrice<this.minPrice){
           return;
         }else{
+          console.log(this.selectFoods)
+          this.$store.commit("GetSelectFoods",this.selectFoods);
           this.$router.push("/payDetail")
         }
       }

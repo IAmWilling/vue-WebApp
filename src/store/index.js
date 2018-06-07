@@ -6,6 +6,7 @@ export default new Vuex.Store({
         seller: [],
         q: null,
         targetBall: '',
+        selectFoods: []
     },
     mutations: {
         GetSeller(store, data) {
@@ -16,6 +17,10 @@ export default new Vuex.Store({
         },
         drop_push(store, data) {
             store.q = data;
+        },
+        GetSelectFoods(store, data) {
+            store.selectFoods = data;
+            console.log(store.selectFoods)
         }
     }
 })

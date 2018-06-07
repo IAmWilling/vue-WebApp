@@ -29,7 +29,7 @@ body {
 }
 #app{
   height: 100%;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 .fade-enter-active{
 	left:0;
@@ -49,4 +49,5 @@ body {
 	left:500rem;
 	transition-duration:0.5s;
 }
+
 </style>

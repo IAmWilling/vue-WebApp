@@ -18,121 +18,136 @@
         <div style="font-size:0.98rem;color:#ffffff;">张（先生）18931893326</div>
       </div>
     </div>
-
   
-    <div class="content-detail">
-      <div class="content-detail-one">
-        <div class="detail-one-top">
-          <div class="detail">
-            <div style="color:black;font-size:0.96rem;font-weight:700;line-height:2rem;flex:1;">送达时间</div>
-            <div style="color:#2396FF;font-size:0.96rem;font-weight:700;line-height:2rem;">选择预定送达时间</div>
+    <div style="position: absolute;width: 94%; top: 8rem;bottom: 3rem;overflow: hidden;" ref="wrappesr">
+      <div>
+        <div class="content-detail">
+          <div class="content-detail-one">
+            <div class="detail-one-top">
+              <div class="detail">
+                <div style="color:black;font-size:0.96rem;font-weight:700;line-height:2rem;flex:1;">送达时间</div>
+                <div style="color:#2396FF;font-size:0.96rem;font-weight:700;line-height:2rem;">选择预定送达时间</div>
+                <div class="iconfont" style="font-size:1rem;color: #D1D1D6;line-height:2rem;margin-left:0.3rem;">&#xe61d;</div>
+              </div>
+            </div>
+            <div class="border-1Px" style="width:90%;margin:0 auto;"></div>
+            <div class="detail-one-bottom">
+              <div class="detail">
+                <div style="color:black;font-size:0.96rem;font-weight:700;height:3rem;flex:1;">
+                  <div style="color:black;font-size:0.96rem;font-weight:700;line-height:2rem;">支付方式</div>
+                  <div style="color:#999999;font-size:0.71rem;font-weight:500;">花呗新户下单<span style="color:#FF624A;">立减5元</span></div>
+  
+                </div>
+                <div style="color:#2396FF;font-size:0.96rem;font-weight:700;line-height:3rem;">支付宝</div>
+                <div class="iconfont" style="font-size:1rem;color: #D1D1D6;line-height:3rem;margin-left:0.3rem;">&#xe61d;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-detail-cont">
+          <div class="good-title border">
+            重庆鸡公煲
+          </div>
+  
+          <div class="detail-list border" v-for="(food,index) in this.$store.state.selectFoods" :key="index">
+            <!-- 图片和标题 -->
+            <div class="img-title">
+              <div style="display:inline-block;width:3.2rem;height:3rem;">
+                <img style=" width:auto;height:3rem;max-width:100%;max-height:100%;" :src="food.image">
+                 
+              </div>
+  
+              <div class="title">
+                {{food.name}}
+              </div>
+            </div>
+            <div class="count">
+              x{{food.count}}
+            </div>
+            <div class="price">
+              ￥{{food.count * food.price}}
+            </div>
+          </div>
+          <!-- 红包 -->
+          <div class="redBox border">
+            <div style="color:black;font-size:0.96rem;font-weight:700;line-height:2rem;flex:1;">红包</div>
+            <div style="color:#BBBBBB;font-size:0.8rem;line-height:2rem;">无可用红包</div>
             <div class="iconfont" style="font-size:1rem;color: #D1D1D6;line-height:2rem;margin-left:0.3rem;">&#xe61d;</div>
           </div>
+          <!-- 小计 -->
+          <div class="smallPay">
+            <div style="color:#BBBBBB;font-size:0.8rem;line-height:2.5rem;flex:1;">优惠说明 ?</div>
+            <div style="color:black;font-size:0.9rem;line-height:2.9rem;">小计</div>
+            <div class="iconfont" style="font-size:1.2rem;color: black;font-weight:700;line-height:2.5rem;margin-left:0.3rem;">￥{{price}}</div>
+          </div>
         </div>
-        <div class="border-1Px" style="width:90%;margin:0 auto;"></div>
-        <div class="detail-one-bottom">
-          <div class="detail">
-            <div style="color:black;font-size:0.96rem;font-weight:700;height:3rem;flex:1;">
-              <div style="color:black;font-size:0.96rem;font-weight:700;line-height:2rem;">支付方式</div>
-              <div style="color:#999999;font-size:0.71rem;font-weight:500;">花呗新户下单<span style="color:#FF624A;">立减5元</span></div>
+        <!-- 是否成为超级会员 -->
+        <div class="eleme-vip">
+          <div style="color:black;font-size:0.96rem;font-weight:700;height:3rem;flex:1;">
+            <div style="color:black;font-size:0.96rem;font-weight:700;line-height:2rem;">成为超级会员,本单减3元</div>
+            <div style="color:#BBBBBB;font-size:0.71rem;font-weight:500;">每月送10元奖励金，可兑至少10元无门槛红包</div>
+          </div>
+          <div style="color:black;font-size:0.96rem;font-weight:700;line-height:3rem;"><span style="color:#BBBBBB;font-size:0.8rem;"><del>￥15</del></span>￥6</div>
+          <div class="iconfont" style="font-size:1rem;color: #D1D1D6;line-height:3rem;margin-left:0.3rem;">&#xe629;</div>
+        </div>
+        <!-- 订单备注等 -->
+        <div class="dingdanDetail">
+          <!-- 订单备注 -->
+          <div class="beizhu border">
+            <div style="color:black;font-size:0.96rem;font-weight:700;line-height:2rem;flex:1;">订单备注</div>
+            <div style="color:#BBBBBB;font-size:0.8rem;line-height:2rem;">口味、偏好</div>
+            <div class="iconfont" style="font-size:1rem;color: #D1D1D6;line-height:2rem;margin-left:0.3rem;">&#xe61d;</div>
+          </div>
+          <!-- 餐具份数 -->
+          <div class="canjufenshu border">
+            <div style="color:black;font-size:0.96rem;font-weight:700;line-height:2rem;flex:1;">餐具份数</div>
+            <div style="color:#BBBBBB;font-size:0.8rem;line-height:2rem;"> <span class="iconfont" style="color:#1DC971;font-size:0.8rem;margin-right:0.6rem;">&#xe645;&nbsp;马上助力环保</span>选择</div>
+            <div class="iconfont" style="font-size:1rem;color: #D1D1D6;line-height:2rem;margin-left:0.3rem;">&#xe61d;</div>
+          </div>
+          <!-- 匿名购买 -->
+          <div class="nimingPay">
+            <div style="color:black;font-size:0.96rem;font-weight:700;line-height:2rem;flex:1;">匿名购买</div>
   
+            <div class="" data-control="BOX" id="Box_points_switch">
+              <label><input class="mui-switch mui-switch-anim" type="checkbox" id="switch"></label>
             </div>
-            <div style="color:#2396FF;font-size:0.96rem;font-weight:700;line-height:3rem;">支付宝</div>
-            <div class="iconfont" style="font-size:1rem;color: #D1D1D6;line-height:3rem;margin-left:0.3rem;">&#xe61d;</div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="content-detail-cont">
-      <div class="good-title border">
-        重庆鸡公煲
-      </div>
   
-      <div class="detail-list border">
-        <!-- 图片和标题 -->
-        <div class="img-title">
-          <div style="display:inline-block;width:3.2rem;height:3rem;">
-            <img style=" width:auto;height:3rem;max-width:100%;max-height:100%;" src="https://ss3.baidu.com/-rVXeDTa2gU2pMbgoY3K/it/u=3689517520,124186600&fm=202&mola=new&crop=v1"
-              alt="">
-          </div>
-  
-          <div class="title">
-            迷你小包+鱼豆腐+宽粉+金针菇+米饭
-          </div>
-        </div>
-        <div class="count">
-          x1
-        </div>
-        <div class="price">
-          ￥14.99
-        </div>
-      </div>
-      <!-- 红包 -->
-      <div class="redBox border">
-        <div style="color:black;font-size:0.96rem;font-weight:700;line-height:2rem;flex:1;">红包</div>
-        <div style="color:#BBBBBB;font-size:0.8rem;line-height:2rem;">无可用红包</div>
-        <div class="iconfont" style="font-size:1rem;color: #D1D1D6;line-height:2rem;margin-left:0.3rem;">&#xe61d;</div>
-      </div>
-      <!-- 小计 -->
-      <div class="smallPay">
-        <div style="color:#BBBBBB;font-size:0.8rem;line-height:2.5rem;flex:1;">优惠说明 ?</div>
-        <div style="color:black;font-size:0.9rem;line-height:2.9rem;">小计</div>
-        <div class="iconfont" style="font-size:1.2rem;color: black;font-weight:700;line-height:2.5rem;margin-left:0.3rem;">￥14.99</div>
       </div>
     </div>
-    <!-- 是否成为超级会员 -->
-    <div class="eleme-vip">
-      <div style="color:black;font-size:0.96rem;font-weight:700;height:3rem;flex:1;">
-        <div style="color:black;font-size:0.96rem;font-weight:700;line-height:2rem;">成为超级会员,本单减3元</div>
-        <div style="color:#BBBBBB;font-size:0.71rem;font-weight:500;">每月送10元奖励金，可兑至少10元无门槛红包</div>
-      </div>
-      <div style="color:black;font-size:0.96rem;font-weight:700;line-height:3rem;"><span style="color:#BBBBBB;font-size:0.8rem;"><del>￥15</del></span>￥6</div>
-      <div class="iconfont" style="font-size:1rem;color: #D1D1D6;line-height:3rem;margin-left:0.3rem;">&#xe629;</div>
+    <div class="bottom-pay">
+      <div class="left">￥{{price}}</div>
+      <div class="right-pay">确认支付</div>
     </div>
-    <!-- 订单备注等 -->
-    <div class="dingdanDetail">
-      <!-- 订单备注 -->
-      <div class="beizhu border">
-        <div style="color:black;font-size:0.96rem;font-weight:700;line-height:2rem;flex:1;">订单备注</div>
-        <div style="color:#BBBBBB;font-size:0.8rem;line-height:2rem;">口味、偏好</div>
-        <div class="iconfont" style="font-size:1rem;color: #D1D1D6;line-height:2rem;margin-left:0.3rem;">&#xe61d;</div>
-      </div>
-      <!-- 餐具份数 -->
-      <div class="canjufenshu border">
-        <div style="color:black;font-size:0.96rem;font-weight:700;line-height:2rem;flex:1;">餐具份数</div>
-        <div style="color:#BBBBBB;font-size:0.8rem;line-height:2rem;"> <span class="iconfont" style="color:#1DC971;font-size:0.8rem;margin-right:0.6rem;">&#xe645;&nbsp;马上助力环保</span>选择</div>
-        <div class="iconfont" style="font-size:1rem;color: #D1D1D6;line-height:2rem;margin-left:0.3rem;">&#xe61d;</div>
-      </div>
-      <!-- 匿名购买 -->
-      <div class="nimingPay">
-        <div style="color:black;font-size:0.96rem;font-weight:700;line-height:2rem;flex:1;">匿名购买</div>
-
-        <div class="" data-control="BOX" id="Box_points_switch">
-          <label><input class="mui-switch mui-switch-anim" type="checkbox" id="switch"></label>
-        </div>
-      </div>
-    </div>
-   
-
-
   </div>
 </template>
 <script>
-import BScroll from "better-scroll";
-export default {
-  methods: {
-    returnGoods() {
-      this.$router.push("/goods");
+  import BScroll from 'better-scroll'
+  export default {
+    methods: {
+      returnGoods() {
+        this.$router.push('/goods')
+      }
+    },
+    created() {
+      this.$nextTick(() => {
+        this.bscroll = new BScroll(this.$refs.wrappesr, {
+          click: true,
+           momentumLimitDistance:5
+        })
+      })
+    },
+    computed:{
+      price(){
+        let price = 0;
+        this.$store.state.selectFoods.forEach(food=>{
+          price += food.count * food.price;
+        });
+        return price;
+      }
     }
-  },
-  created() {
-    // this.$nextTick(() => {
-    //   this.bscroll = new BScroll(this.$refs.aaa, {
-    //     click: true
-    //   });
-    // });
   }
-};
 </script>
 <style lang="stylus" scoped>
 @import '../../common/stylus/mixin.styl';
@@ -142,7 +157,7 @@ export default {
   src: url('//at.alicdn.com/t/font_652215_f6u5xpgvrfkzkt9.eot');
   src: url('//at.alicdn.com/t/font_652215_f6u5xpgvrfkzkt9.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_652215_f6u5xpgvrfkzkt9.woff') format('woff'), url('//at.alicdn.com/t/font_652215_f6u5xpgvrfkzkt9.ttf') format('truetype'), url('//at.alicdn.com/t/font_652215_f6u5xpgvrfkzkt9.svg#iconfont') format('svg');
 }
-
+html,body{-webkit-text-size-adjust: 100%;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
 .iconfont {
   font-family: 'iconfont' !important;
   font-size: 16px;
@@ -163,6 +178,7 @@ export default {
   overflow: hidden;
   height: 100%;
   z-index: 1 !important;
+
 
   .headers {
     position: fixed;
@@ -205,7 +221,6 @@ export default {
   .content-detail {
     position: relative;
     margin: 0 auto;
-    top: 7rem;
     z-index: 0;
 
     .content-detail-one {
@@ -239,7 +254,6 @@ export default {
 
   .content-detail-cont {
     position: relative;
-    top: 7rem;
     margin-top: 0.6rem;
     min-height: 14rem;
     background-color: #fff;
@@ -306,7 +320,6 @@ export default {
 
   .eleme-vip {
     position: relative;
-    top: 7rem;
     margin-top: 0.8rem;
     margin-bottom: 0.8rem;
     height: 3rem;
@@ -317,10 +330,9 @@ export default {
   }
 
   .dingdanDetail {
-    height: 6.5rem;
-    background-color: #fff;
+    height: 12rem;
+    
     position: relative;
-    top: 7rem;
     width: 100%;
 
     .beizhu {
@@ -329,6 +341,7 @@ export default {
       padding-bottom: 0.6rem;
       padding-left: 1rem;
       height: 2rem;
+       background-color: #fff;
       display: flex;
     }
 
@@ -337,6 +350,7 @@ export default {
       padding-right: 1rem;
       padding-bottom: 0.6rem;
       padding-left: 1rem;
+       background-color: #fff;
       height: 2rem;
       display: flex;
     }
@@ -353,6 +367,32 @@ export default {
       #Box_points_switch {
         line-height: 2.4rem;
       }
+    }
+  }
+  .bottom-pay{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 50;
+    width: 100%;
+    height: 3rem;
+    background:#141d27;
+    opacity:0.8;
+    display:flex;
+    .left{
+      flex:1;
+      color:#fff;
+      font-size:1.3rem;
+      padding: 0.8rem;
+      height: 2rem;
+      padding-left:2rem;
+    }
+    .right-pay{
+      width:7rem;
+      background:#58D178;
+      color:#fff;
+      line-height:3rem;
+      text-align:center;
     }
   }
 }

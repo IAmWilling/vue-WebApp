@@ -13,7 +13,7 @@
 			<!-- 分类标题 -->
 				<h1 class="title" ref="special_title">{{item.name}}</h1>
 				<ul>
-					<li v-for="food in item.foods" :key="food.name" class="food-item border">
+					<li  @click="selectedFood(food,$event)" v-for="food in item.foods" :key="food.name" class="food-item border">
 							<!-- 食品图片 -->
 							<div class="icon"><img :src="food.icon" width="64" height="64"></div>
 							<div class="content">
@@ -42,6 +42,7 @@
 		</ul>
 	</div>
 	<shopcart :selectFoods="selectFoods" :deliveryPrice="seller.deliveryPrice" :minPrice="seller.minPrice"></shopcart>
+	<food :food="selectedFoods" ref="food"></food>
 </div>
     
 </template>
@@ -50,7 +51,7 @@ import axios from "axios";
 import BScroll from "better-scroll";
 import shopcart from "../shopcart/shopcart";
 import cartcontrol from "../cartcontrol/cartcontrol";
-
+import food from '../food/food';
 export default {
   name: "goods",
   props: {
@@ -58,14 +59,16 @@ export default {
   },
   components: {
     shopcart,
-    cartcontrol
+    cartcontrol,
+		food
   },
   data() {
     return {
       goods: [],
       listHeight: [],
       scrollY: 0,
-      current: "current"
+      current: "current",
+			selectedFoods:{},			//选中空选项
     };
   },
   created() {
@@ -144,6 +147,15 @@ export default {
     },
 		_drop(target){
 			
+		},
+		selectedFood(food,event){
+			if(!event._constructed){
+				return;
+			}
+
+			this.selectedFoods = food;
+			this.$refs.food.show();
+			console.log(food)
 		}
   },
 	events:{
