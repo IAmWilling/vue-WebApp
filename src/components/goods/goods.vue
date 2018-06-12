@@ -9,11 +9,11 @@
 	</div>
 	<div class="foods-wrapper" ref="foods_wrapper">
 		<ul>
-			<li v-for="item in goods" class="food-list food-list-hook" :key="item.name" >
+			<li v-for="item in goods" class="food-list food-list-hook" :key="item.name">
 			<!-- 分类标题 -->
 				<h1 class="title" ref="special_title">{{item.name}}</h1>
 				<ul>
-					<li  @click="selectedFood(food,$event)" v-for="food in item.foods" :key="food.name" class="food-item border">
+					<li  @click="selectedFood(food,$event)" v-for="food in item.foods" :key="food.name" class="food-item border"  ref="food_item">
 							<!-- 食品图片 -->
 							<div class="icon"><img :src="food.icon" width="64" height="64"></div>
 							<div class="content">
@@ -51,7 +51,7 @@ import axios from "axios";
 import BScroll from "better-scroll";
 import shopcart from "../shopcart/shopcart";
 import cartcontrol from "../cartcontrol/cartcontrol";
-import food from '../food/food';
+import food from "../food/food";
 export default {
   name: "goods",
   props: {
@@ -60,7 +60,7 @@ export default {
   components: {
     shopcart,
     cartcontrol,
-		food
+    food
   },
   data() {
     return {
@@ -68,7 +68,7 @@ export default {
       listHeight: [],
       scrollY: 0,
       current: "current",
-			selectedFoods:{},			//选中空选项
+      selectedFoods: {} //选中空选项
     };
   },
   created() {
@@ -98,15 +98,15 @@ export default {
       return 0;
     },
     selectFoods() {
-			let foods = [];
-			this.goods.forEach(good=>{
-				good.foods.forEach(food=>{
-					if(food.count){
-						foods.push(food);
-					}
-				})
-			});
-			return foods;
+      let foods = [];
+      this.goods.forEach(good => {
+        good.foods.forEach(food => {
+          if (food.count) {
+            foods.push(food);
+          }
+        });
+      });
+      return foods;
     }
   },
   methods: {
@@ -145,24 +145,23 @@ export default {
     handleClickItemName(name, e) {
       this.foodsScroll.scrollToElement(this._search(name), 500);
     },
-		_drop(target){
-			
-		},
-		selectedFood(food,event){
-			if(!event._constructed){
-				return;
-			}
+    _drop(target) {},
+    selectedFood(food, event) {
+      if (!event._constructed) {
+        return;
+      }
 
-			this.selectedFoods = food;
-			this.$refs.food.show();
-			console.log(food)
-		}
+   
+      this.selectedFoods = food;
+      this.$refs.food.show();
+      console.log(food);
+    }
   },
-	events:{
-		'cart.add'(target){
-			this._drop(target)
-		}
-	}
+  events: {
+    "cart.add"(target) {
+      this._drop(target);
+    }
+  }
 };
 </script>
 <style lang="stylus" scoped>

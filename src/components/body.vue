@@ -9,7 +9,7 @@
 	  <div class="border-1Px"></div>
   	<div class="content">
   		<transition name="fade" mode="out-in">
-  			<router-view :seller="this.seller"></router-view>
+  			<router-view :seller="this.seller" ></router-view>
   		</transition>
   	</div>
   </div>

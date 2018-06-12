@@ -15,7 +15,7 @@
               <!-- 描述 配送价 -->
               <div class="desc">另需配送费￥{{deliveryPrice}}元</div>
           </div>
-          <div class="content-right" :class="payClass" @click="pay">{{payDesc}}</div>
+          <div class="content-right" :class="payClass" @click.stop.prevent="pay">{{payDesc}}</div>
       </div>
       <div class="ball-containe">
           <div v-for="ball in balls" v-show="ball.show" transition="drop" class="ball">

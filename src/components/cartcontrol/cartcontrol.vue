@@ -2,7 +2,7 @@
   <div class="cartcontrol">
     <!-- 减号按钮 -->
     <transition name="fade">
-      <div class="cart-decrease iconfont" v-show="food.count>0" @click="decreaseCart($event)">
+      <div class="cart-decrease iconfont" v-show="food.count>0" @touchstart.stop.prevent="decreaseCart($event)">
         &#xe601;
       </div>
     </transition>
@@ -10,7 +10,7 @@
       <transition name="fade-count">
     <div class="cart-count iconfont" v-show="food.count>0">{{food.count}}</div>
     </transition>
-    <div class="cart-add iconfont" @click="addCart($event)">&#xe659;</div>
+    <div class="cart-add iconfont" @touchstart.stop.prevent="addCart($event)">&#xe659;</div>
   </div>
 </template>
 <script>
@@ -24,24 +24,18 @@ export default {
   },
   methods: {
     addCart(event) {
-      if (!event._constructed) {
-        return;
-      }
       if (!this.food.count) {
         Vue.set(this.food, "count", 1);
       } else {
+        
         this.food.count++;
       }
       //当点击的时候传入dom对象
       // this.$disp atch('cart.add',event.target);
-      this.$store.commit("GetTargetBall",event.target);
-      this.$store.state.q;
       console.log(this.food.count);
     },
     decreaseCart(event) {
-      if (!event._constructed) {
-        return;
-      }
+    
       if (this.food.count) {
         this.food.count--;
       }
